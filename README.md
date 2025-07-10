@@ -1,12 +1,12 @@
 # 🧠 Deployment of XAI for Transparent Decision Making
 
 ## 📌 Overview
-This project implements an Explainable AI (XAI) system to classify brain tumors from MRI images, ensuring **transparency and interpretability** of model decisions. Using **LIME** and **Grad-CAM**, we visualize why the model made a certain prediction — critical for trust in medical diagnosis systems.
+This project implements an Explainable AI (XAI) system to classify brain tumors from MRI images, ensuring **transparency and interpretability** of model decisions, using **LIME** and **Grad-CAM**.
 
 > ✅ 90%+ Classification Accuracy  
-> ✅ Applied LIME for feature-level interpretability  
-> ✅ Used Grad-CAM for regional explanations  
-> ✅ Built a Streamlit-based interactive web app
+> ✅ LIME for pixel‑level explanations  
+> ✅ Grad‑CAM for regional attention  
+> ✅ Streamlit interface for deployment
 
 ---
 
@@ -14,9 +14,9 @@ This project implements an Explainable AI (XAI) system to classify brain tumors 
 
 - **Source**: [Kaggle – Brain Tumor Classification Dataset](https://www.kaggle.com/datasets)
 - **Preprocessing**:
-  - Images resized to 224×224 or 256×256
+  - Resized to 224×224 or 256×256
   - Normalization and augmentation applied
-  - ~3000 total images used (1500 Tumor / 1500 No Tumor)
+  - ~3000 images total (1500 Tumor / 1500 No Tumor)
 
 ---
 
@@ -25,44 +25,44 @@ This project implements an Explainable AI (XAI) system to classify brain tumors 
 | Tool / Library    | Purpose                              |
 |------------------|--------------------------------------|
 | Python           | Core programming language            |
-| TensorFlow/Keras | Deep learning model training         |
-| OpenCV           | Image preprocessing                  |
-| Matplotlib       | Visualization of results             |
-| LIME             | Local explanation technique          |
-| Grad-CAM         | CNN-based attention visualization    |
-| Streamlit        | Model Deployment UI                  |
-| Scikit-learn     | Metrics and preprocessing            |
+| TensorFlow/Keras | Deep learning                        |
+| OpenCV           | Image processing                     |
+| Matplotlib       | Visualizations                       |
+| LIME             | Feature-level interpretability       |
+| Grad-CAM         | Region-level visual explanations     |
+| Streamlit        | Deployment UI                        |
+| Scikit-learn     | Metrics & preprocessing              |
 
 ---
 
 ## 🧪 Model Architecture
 
-We trained two models: **VGG16 (pre-trained)** and a **Custom CNN**, optimized for binary classification (tumor/no tumor):
+Two models were trained:
 
-- **Input Size**: 224x224 pixels
-- **Optimizer**: Adam
-- **Loss Function**: Categorical Crossentropy
-- **Architecture**: Conv2D → MaxPool → Conv2D → MaxPool → Flatten → Dense → Sigmoid
-- **Accuracy Achieved**: **90%+**
+- **VGG16** (pre-trained)
+- **Custom CNN**
+
+Both use 224×224 input and achieve > 90% accuracy with Adam optimizer and Categorical Crossentropy loss.
 
 ---
 
 ## 📷 Sample Visual Explanations
 
 ### 🧠 MRI Input Images
-![MRI Images](images/mri_comparison.png)
+![MRI Examples](Screenshot%202025-07-11%20002049.png)
 
-### 🔍 LIME Explanation
+### 🔍 LIME Explanation (VGG16)
+![LIME Custom CNN Model](Screenshot%202025-07-11%20002116.png)
 
-| VGG16 LIME | Custom Model LIME |
-|------------|-------------------|
-| ![LIME VGG16](images/lime_vgg16.png) | ![LIME Custom](images/lime_custom.png) |
+### 🔍 LIME Explanation (CUSTOM CNN Model)
+![LIME VGG16](Screenshot%202025-07-11%20002204.png)
 
-### 🔥 Grad-CAM Explanation
+### 🔥 Grad-CAM Explanation (Custom CNN Model)
+![Grad-CAM Custom CNN Model](Screenshot%202025-07-11%20002132.png)
 
-| VGG16 Grad-CAM | Custom Model Grad-CAM |
-|----------------|------------------------|
-| ![Grad-CAM VGG16](images/gradcam_vgg16.png) | ![Grad-CAM Custom](images/gradcam_custom.png) |
+### 🔥 Grad-CAM Explanation (VGG16)
+![Grad-CAM VGG16](Screenshot%202025-07-11%20002149.png)
+
 
 ---
 
