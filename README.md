@@ -55,10 +55,10 @@ Both use 224×224 input and achieve > 90% accuracy with Adam optimizer and Cat
 ![LIME Custom CNN Model](Screenshot%202025-07-11%20002116.png)
 
 ### 🔍 LIME Explanation (CUSTOM CNN Model)
-![LIME VGG16](Screenshot%202025-07-11%20002204.png)
+![Grad-CAM Custom CNN Model](Screenshot%202025-07-11%20002132.png)
 
 ### 🔥 Grad-CAM Explanation (Custom CNN Model)
-![Grad-CAM Custom CNN Model](Screenshot%202025-07-11%20002132.png)
+![LIME VGG16](Screenshot%202025-07-11%20002204.png)
 
 ### 🔥 Grad-CAM Explanation (VGG16)
 ![Grad-CAM VGG16](Screenshot%202025-07-11%20002149.png)
