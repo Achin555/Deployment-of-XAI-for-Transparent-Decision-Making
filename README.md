@@ -1,63 +1,68 @@
 # 🧠 Deployment of XAI for Transparent Decision Making
 
 ## 📌 Overview
+This project implements an Explainable AI (XAI) system to classify brain tumors from MRI images, ensuring **transparency and interpretability** of model decisions. Using **LIME** and **Grad-CAM**, we visualize why the model made a certain prediction — critical for trust in medical diagnosis systems.
 
-This project implements an Explainable AI (XAI) system to classify **brain tumors** from MRI images while ensuring transparency and trust in the model's predictions. Using state-of-the-art techniques like **LIME** and **Grad-CAM**, the model not only performs accurate predictions but also **visualizes the reasoning behind its decisions** — a critical requirement in healthcare applications.
-
-- ✅ Achieved **90%+ classification accuracy**
-- ✅ Applied **LIME** for local feature importance visualization
-- ✅ Used **Grad-CAM** to highlight key regions in MRI images
-- ✅ Built a deployment-ready application using **Streamlit**
+> ✅ 90%+ Classification Accuracy  
+> ✅ Applied LIME for feature-level interpretability  
+> ✅ Used Grad-CAM for regional explanations  
+> ✅ Built a Streamlit-based interactive web app
 
 ---
 
 ## 🗂️ Dataset
 
-- **Source**: Kaggle  
-- **Link**: [Brain Tumor Classification Dataset](https://www.kaggle.com/datasets)
-- The dataset contains MRI images categorized into three tumor types:
-  - **Glioma Tumor**
-  - **Meningioma Tumor**
-  - **Pituitary Tumor**
-
-Each class has hundreds of labeled images, enabling robust supervised training.
+- **Source**: [Kaggle – Brain Tumor Classification Dataset](https://www.kaggle.com/datasets)
+- **Preprocessing**:
+  - Images resized to 224×224 or 256×256
+  - Normalization and augmentation applied
+  - ~3000 total images used (1500 Tumor / 1500 No Tumor)
 
 ---
 
 ## 🛠️ Technologies Used
 
-| Tool / Library      | Purpose                             |
-|---------------------|-------------------------------------|
-| Python              | Core programming language           |
-| TensorFlow / Keras  | Deep learning framework             |
-| OpenCV              | Image processing                    |
-| Matplotlib / Seaborn| Visualization                       |
-| LIME                | Model interpretability              |
-| Grad-CAM            | Visual explanations of CNNs         |
-| Streamlit           | UI for deployment                   |
-| Scikit-learn        | Metrics, preprocessing              |
+| Tool / Library    | Purpose                              |
+|------------------|--------------------------------------|
+| Python           | Core programming language            |
+| TensorFlow/Keras | Deep learning model training         |
+| OpenCV           | Image preprocessing                  |
+| Matplotlib       | Visualization of results             |
+| LIME             | Local explanation technique          |
+| Grad-CAM         | CNN-based attention visualization    |
+| Streamlit        | Model Deployment UI                  |
+| Scikit-learn     | Metrics and preprocessing            |
 
 ---
 
 ## 🧪 Model Architecture
 
-A Convolutional Neural Network (CNN) was trained from scratch using MRI images as input. The model was evaluated on accuracy and interpretability, and it demonstrated high performance with the following characteristics:
+We trained two models: **VGG16 (pre-trained)** and a **Custom CNN**, optimized for binary classification (tumor/no tumor):
 
-- **Input Size**: 224x224 MRI images
+- **Input Size**: 224x224 pixels
 - **Optimizer**: Adam
 - **Loss Function**: Categorical Crossentropy
-- **Accuracy**: **90%+** on test set
-- **Explainability**: LIME + Grad-CAM overlays
+- **Architecture**: Conv2D → MaxPool → Conv2D → MaxPool → Flatten → Dense → Sigmoid
+- **Accuracy Achieved**: **90%+**
 
 ---
 
 ## 📷 Sample Visual Explanations
 
-| MRI Image | Grad-CAM Output | LIME Output |
-|-----------|------------------|--------------|
-| ![MRI](assets/sample_mri.png) | ![GradCAM](assets/sample_gradcam.png) | ![LIME](assets/sample_lime.png) |
+### 🧠 MRI Input Images
+![MRI Images](images/mri_comparison.png)
 
-These outputs help clinicians verify **why** a prediction was made by focusing on image regions or pixel importance.
+### 🔍 LIME Explanation
+
+| VGG16 LIME | Custom Model LIME |
+|------------|-------------------|
+| ![LIME VGG16](images/lime_vgg16.png) | ![LIME Custom](images/lime_custom.png) |
+
+### 🔥 Grad-CAM Explanation
+
+| VGG16 Grad-CAM | Custom Model Grad-CAM |
+|----------------|------------------------|
+| ![Grad-CAM VGG16](images/gradcam_vgg16.png) | ![Grad-CAM Custom](images/gradcam_custom.png) |
 
 ---
 
@@ -65,8 +70,7 @@ These outputs help clinicians verify **why** a prediction was made by focusing o
 
 ### 🔧 Installation
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/Achin555/Deployment-of-XAI-for-Transparent-Decision-Making.git
-   cd Deployment-of-XAI-for-Transparent-Decision-Making
-****
+```bash
+git clone https://github.com/Achin555/Deployment-of-XAI-for-Transparent-Decision-Making.git
+cd Deployment-of-XAI-for-Transparent-Decision-Making
+pip install -r requirements.txt
